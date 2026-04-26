@@ -1,0 +1,47 @@
+{
+  "name": "syncwave-desktop",
+  "version": "1.0.0",
+  "description": "Desktop app wrapper for SyncWave",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "build": "node build-app.js"
+  },
+  "build": {
+    "appId": "com.syncwave.app",
+    "productName": "SyncWave",
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        "dir"
+      ],
+      "icon": "icon.png"
+    },
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "backend",
+        "filter": [
+          "**/*",
+          "!uploads"
+        ]
+      },
+      {
+        "from": "../frontend/dist",
+        "to": "frontend/dist"
+      }
+    ]
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.1",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2",
+    "fs-extra": "^11.3.4"
+  }
+}
